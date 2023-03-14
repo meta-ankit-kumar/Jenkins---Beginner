@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm install'
+                sh 'npm install --cache=".YourCustomCacheDirectoryName"'
                 sh 'npm run build'
             }
         }
