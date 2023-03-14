@@ -3,18 +3,18 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm install'
-                sh 'npm run build'
+                sh '/usr/local/bin/npm install'
+                sh '/usr/local/bin/npm run build'
             }
         }
         stage('Test') {
             steps {
-                sh 'npm test'
+                sh '/usr/local/bin/npm test'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'npm run deploy'
+                sh '/usr/local/bin/npm run deploy'
             }
         }
     }
