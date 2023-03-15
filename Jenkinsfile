@@ -11,5 +11,11 @@ pipeline {
                 sh 'npm run build'
             }
         }
+        stage('Deploy') {
+            steps {
+                sh 'npm install --cache=".YourCustomCacheDirectoryName"'
+                sh 'npm run build'
+            }
+        }
     }
 }
