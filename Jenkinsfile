@@ -12,6 +12,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                sh 'git config --global --add safe.directory /Users/ankit/.jenkins/workspace/jenkins-reacr'
                 sh 'git remote add origin https://github.com/meta-ankit-kumar/Jenkins---Beginner.git'
                 sh 'npm run deploy                       '
             }
