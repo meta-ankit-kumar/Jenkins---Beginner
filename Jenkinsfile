@@ -12,7 +12,7 @@ pipeline {
         }
         stage('Install gh-pages') {
             steps {
-                sh 'npm install -g gh-pages'
+                sh 'npm install gh-pages'
             }
         }
         stage('Deploy') {
