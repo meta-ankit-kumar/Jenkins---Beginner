@@ -12,6 +12,7 @@ pipeline {
         }
         stage('Install gh-pages') {
             steps {
+                sh "chmod 777 /home/node/app"
                 sh 'npm install gh-pages'
             }
         }
