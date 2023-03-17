@@ -11,12 +11,11 @@ pipeline {
             }
         }
         stage('Deploy') {
-            steps {
-                withEnv(['GIT_USER=ankit.kumar@metacube.com', 'GIT_TOKEN=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']) {
-                sh 'npm run deploy'
+         steps {
+            withCredentials([string(credentialsId: 'efedeaa6-be24-4b19-963c-5d4c5cd21108', variable: 'GITHUB_TOKEN')]) {
+                sh "GIT_USER=${GITHUB_TOKEN} npm run deploy"
                 }
             }
         }
-
     }
 }
