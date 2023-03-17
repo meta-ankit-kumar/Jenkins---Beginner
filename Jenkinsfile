@@ -7,6 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh 'git clone https://github.com/meta-ankit-kumar/Jenkins---Beginner.git'
                 sh 'npm install --cache=".YourCustomCacheDirectoryName"'
             }
         }
