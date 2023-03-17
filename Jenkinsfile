@@ -18,11 +18,11 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'f6849c6e-5c5b-4e0f-8239-7e7955dc4a90', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh 'echo ${USERNAME} ${PASSWORD}'
-                    sh 'gh-pages -d build -r https://${USERNAME}:${PASSWORD}@github.com/meta-ankit-kumar/Jenkins---Beginner.git'
+                withEnv(['GIT_USER=ankit.kumar@metacube.com', 'GIT_TOKEN=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']) {
+                sh 'npm run deploy'
                 }
             }
         }
+
     }
 }
