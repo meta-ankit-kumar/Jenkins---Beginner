@@ -1,21 +1,29 @@
 pipeline {
-    agent {
-        docker {
-            image 'my-docker-image:latest'
-        }
-    }
+    agent any
+    
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                sh 'git clone https://github.com/meta-ankit-kumar/Jenkins---Beginner.git'
-                sh 'npm install --cache=".YourCustomCacheDirectoryName"'
+                git branch: 'main', url: 'https://github.com/meta-ankit-kumar/Jenkins---Beginner.git'
             }
         }
-        stage('Deploy') {
-         steps {
-            withCredentials([string(credentialsId: 'efedeaa6-be24-4b19-963c-5d4c5cd21108', variable: 'GITHUB_TOKEN')]) {
-                sh "GIT_USER=${GITHUB_TOKEN} npm run deploy"
+        
+        stage('Build') {
+            agent {
+                docker { 
+                    image 'my-docker-image' 
+                    args '-u root'
                 }
+            }
+            
+            steps {
+                sh 'npm install'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                sh 'npm run deploy'
             }
         }
     }
